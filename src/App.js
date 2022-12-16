@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import AuthorPages from "./components/authors/AuthorPages";
+import BlogPages from "./components/blogs/BlogPages";
+import HomePage from "./components/home/HomePage";
+import Layout from "./components/layout";
+import ScrollToTop from "./components/shared/ScrollToTop";
 
-function App() {
+const App = () => {
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <ScrollToTop/>
+      <Routes>
+        <Route path="/" element={<HomePage />} index/>
+        <Route path="blogs/:slug" element={<BlogPages />} />
+        <Route path="authors/:slug" element={<AuthorPages />} />
+      </Routes>
+    </Layout>
   );
-}
+};
 
 export default App;
